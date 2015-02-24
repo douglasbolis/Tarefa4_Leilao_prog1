@@ -4,24 +4,24 @@
 #	- Ofertas
 
 def f_cadastraProdutos(dicP):
-	nome, valor = "", 0.0
+	nomeP, valor = "", 0.0
 	
 	print("\n\n------------------------- Cadastro de Produtos ----------------------------")
-	nome = input("Informe o nome do Produto: ")
-	while nome != "":
-		if nome in dicP:
+	nomeP = input("Informe o nome do Produto: ")
+	while nomeP != "":
+		if nomeP in dicP:
 			print("Produto ja cadastrado!.")
 		else:
-			valor = float(input("Informe o valor do produto '%s': " %(nome)))
-			dicP[nome] = valor
+			valor = float(input("Informe o valor do produto '%s': " %(nomeP)))
+			dicP[nomeP] = valor
 		#fim if
 		print("\n------------------------- Cadastro de Produtos ----------------------------")
-		nome = input("Informe o nome do Produto: ")
+		nomeP = input("Informe o nome do Produto: ")
 	#fim while	
 #fim funcao
 
 def f_cadastraClientes(dicC):
-	cpf, nome, endereco = "", "", ""
+	cpf, nomeC, endereco = "", "", ""
 	lst = []
 	
 	print("\n\n------------------------- Cadastro de Clientes ----------------------------")
@@ -30,9 +30,9 @@ def f_cadastraClientes(dicC):
 		if cpf in dicC:
 			print("Cliente ja cadastrado!.")
 		else:
-			nome = input("Informe o nome do cliente '%s': " %(cpf))
+			nomeC = input("Informe o nome do cliente '%s': " %(cpf))
 			endereco = input("Informe o endereco do cliente '%s': " %(cpf))
-			lst = [nome, endereco]
+			lst = [nomeC, endereco]
 			dicC[cpf] = lst
 		#fim if
 		print("\n\n------------------------- Cadastro de Clientes ----------------------------")
@@ -42,7 +42,7 @@ def f_cadastraClientes(dicC):
 
 def f_cadastraLances(dicC, dicP):
 	dicAux, dicLancesAux = {}, {}
-	cpf, nome, lance = "", "", 0.0
+	cpf, nomeP, lance = "", "", 0.0
 	tpl = ()
 	
 	for chave, valor in dicP.items():
@@ -58,20 +58,20 @@ def f_cadastraLances(dicC, dicP):
 		else:
 			print("")
 			imprime_dados(dicAux)
-			nome = input("\nInforme o produto que deseje dar um Lance: ")
-			if nome not in dicP:
+			nomeP = input("\nInforme o produto que deseje dar um Lance: ")
+			if nomeP not in dicP:
 				print("Produto nao encontrado!.")
 			else:
-				tpl = (cpf, nome)
+				tpl = (cpf, nomeP)
 				lance = float(input("Informe um lance: "))
-				while lance <= dicAux[nome][1]:
+				while lance <= dicAux[nomeP][1]:
 					print("O valor do lance nao pode ser menor que o valor atual")
 					lance = float(input("Informe um lance: "))
 				#fim while
-				dicAux[nome] = [tpl, lance, True]
+				dicAux[nomeP] = [tpl, lance, True]
 			#fim if
 		#fim if
-		print("\n\n------------------------- Cadastro de Lances ----------------------------")
+		print("\n\n---------------------------- Cadastro de Lances ------------------------------")
 		cpf = input("Informe o seu CPF: ")
 	#fim while
 	
