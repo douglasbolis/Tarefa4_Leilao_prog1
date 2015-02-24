@@ -62,7 +62,7 @@ def f_cadastraLances(dicC, dicP):
 			if nomeP not in dicP:
 				print("Produto nao encontrado!.")
 			else:
-				tpl = (cpf, nomeP)
+				tpl = (nomeP, cpf)
 				lance = float(input("Informe um lance: "))
 				while lance <= dicAux[nomeP][1]:
 					print("O valor do lance nao pode ser menor que o valor atual")
@@ -95,15 +95,13 @@ def f_impremeRelatorio(dicC, dicL):
 	print("\n###########################################################################")
 	print("\n------------------------- Relatorio dos Lances ----------------------------")
 	for chave, valor in dicL.items():
-		print("%s\t%.2f\t%s\t%s" %(chave[1], valor, chave[0], dicC[chave[0]][0]))
+		print("%s\t%.2f\t%s\t%s" %(chave[0], valor, chave[1], dicC[chave[1]][0]))
 	#fim for
 	print("")
 #fim funcao
 
 def main():
-	dicProdutos = {"arroz": 2.50, "feijao": 3.20, "carne": 12.00}
-	dicClientes = {"123": ["joao", "rua 1"], "456": ["maria", "rua 2"], "789": ["jose", "rua 3"]}
-	dicLances =  {}
+	dicProdutos, dicClientes, dicLances =  {}, {}, {}
 	
 	f_cadastraProdutos(dicProdutos)
 	f_cadastraClientes(dicClientes)
